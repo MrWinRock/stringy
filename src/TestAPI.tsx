@@ -30,7 +30,7 @@ const TestAPI: React.FC = () => {
     }
 
     return (
-        <>
+        <section className="test-api-page">
             <div className="test-api-title"><h1>Test API Call</h1></div>
             <div className="test-api">
                 {data.map((emp: any, index: number) => (
@@ -47,7 +47,7 @@ const TestAPI: React.FC = () => {
                     </div>
                 ))}
             </div>
-        </>
+        </section>
     );
 };
 
