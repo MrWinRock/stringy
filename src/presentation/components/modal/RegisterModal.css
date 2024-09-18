@@ -1,0 +1,234 @@
+.register-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.modal-bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(118, 118, 118, 0.5);
+    z-index: 100;
+}
+
+.modal-container {
+    background-color: #fff;
+    border-radius: 24px;
+    z-index: 101;
+    max-width: 53vw;
+    height: 700px;
+    width: 100%;
+}
+
+.show-signin,
+.show-create-acc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.modal-devider {
+    height: 100%;
+    width: 1px;
+    background: rgba(102, 102, 102, 0.25);
+}
+
+.signin-container,
+.signin-info-container,
+.create-acc-container,
+.create-acc-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    padding: auto;
+    margin: 3rem;
+}
+
+.signin-container h2,
+.signin-info-container h2,
+.create-acc-container h2,
+.create-acc-info-container h2 {
+    color: #333;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+.signin-form-email,
+.signin-form-password {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-top: 1.5rem;
+    width: 100%;
+}
+
+.signin-form-email label,
+.signin-form-password label {
+    color: #666;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.signin-form-email input,
+.signin-form-password input {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(102, 102, 102, 0.35);
+    padding: 0 10px;
+}
+
+.signin-form-email input:focus,
+.signin-form-password input:focus {
+    border: 1px solid #666;
+}
+
+.reset-password {
+    color: #111;
+    margin-left: auto;
+    padding-top: 8px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 3rem;
+    margin-top: 1.5rem;
+    color: #fff;
+    border-radius: 32px;
+    opacity: 0.25;
+    background: #111;
+    cursor: pointer;
+}
+
+.submit-button.clickable {
+    opacity: 1;
+    background: #111;
+}
+
+.term {
+    margin-top: 1.5rem;
+    color: #111;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.term a {
+    text-decoration-line: underline;
+}
+
+.create-acc-info-container p {
+    color: #666;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.create-acc-info-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 2rem;
+}
+
+.create-acc-info-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.create-acc-info-content li {
+    position: relative;
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.create-acc-info-content li:first-child {
+    padding-top: 0;
+}
+
+.create-acc-info-content li::before {
+    content: "•";
+    color: #666;
+    position: absolute;
+    left: 0;
+    line-height: 1;
+    font-size: 24px;
+}
+
+.create-acc-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.create-acc-form-email label,
+.create-acc-form-username label,
+.create-acc-form-password label {
+    color: #666;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.create-acc-form-email input,
+.create-acc-form-username input,
+.create-acc-form-password input {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(102, 102, 102, 0.35);
+    padding: 0 10px;
+}
+
+.signin-info-container p {
+    color: #666;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.password-exception {
+    color: #666;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 4px;
+}
