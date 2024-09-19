@@ -47,11 +47,11 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                 setShowRegisterForm(false);
                 onSubmit(e);
             } else {
-                setError(response.data.message || "Failed to sign in");
+                setError(response.data.message || "Email or password is invalid");
             }
 
         } catch (error: any) {
-            setError(error.response.data.message || "Failed to sign in");
+            setError(error.response.data.message || "Email or password is invalid");
         } finally {
             setLoading(false);
         }
@@ -129,6 +129,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                                 <button className='reset-password'>Reset password</button>
                                 <button className={`submit-button ${isSignInClickable ? 'clickable' : ''} `} type='submit'>Sign In</button>
                             </form>
+                            {error && <p className='error'>{error}</p>}
                             <div className='signin-description'>
                                 <p className='term'>By continuing, you agree to the <a href='/'>Terms of use</a> and <a href='/'>Privacy Policy.</a>
                                 </p>
@@ -183,7 +184,6 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                                 <button className={`submit-button ${isCreateAccountClickable ? 'clickable' : ''}`} type='submit'>Create an account</button>
                             </form>
                             {loading && <p className='loading'>Loading...</p>}
-                            {error && <p className='error'>{error}</p>}
                         </div>
                     </section>
                 )}
