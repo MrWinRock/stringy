@@ -25,8 +25,9 @@
 }
 
 .logo img {
-    width: 52px;
+    width: 160px;
     height: auto;
+    border-radius: 10px;
 }
 
 /* Search Bar */
