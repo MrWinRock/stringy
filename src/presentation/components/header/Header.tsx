@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import s_logo from "../../assets/images/s_logo.png";
+// import s_logo from "../../assets/images/s_logo.png";
+import stringy_logo from "../../assets/images/stringy_logo.png";
 
 // Icon imports
 import { IoSearch } from "react-icons/io5";
@@ -34,7 +35,7 @@ const Header: React.FC = () => {
         <nav className="header">
             <div className="header-container">
                 <Link to='/' className="logo">
-                    <img src={s_logo} alt="Stringy" />
+                    <img src={stringy_logo} alt="Stringy" />
                 </Link>
                 <div className="search-bar">
                     <div className="search-bar-container">
