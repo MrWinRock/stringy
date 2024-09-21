@@ -108,7 +108,7 @@
 }
 
 .error-form input {
-    border: 1px solid red;
+    border: 1px solid red !important;
 }
 
 .reset-password {

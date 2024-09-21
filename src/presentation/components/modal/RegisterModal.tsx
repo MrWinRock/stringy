@@ -14,6 +14,8 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
     const [loading, setLoading] = useState(false);
     const [signInError, setSignInError] = useState<string | null>(null);
     const [createAccountError, setCreateAccountError] = useState<string | null>(null);
+    const [createAccountSuccess, setCreateAccountSuccess] = useState<string | null>(null);
+    const [isRegistered, setIsRegistered] = useState(false);
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -48,15 +50,34 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                 password
             });
 
-            if (response.data.success) {
-                setShowRegisterForm(false);
-                onSubmit(e);
-            } else {
-                setSignInError(response.data.message || "Email or password is invalid");
+            switch (response.status) {
+                case 200:
+                    setShowRegisterForm(false);
+                    onSubmit(e);
+                    break;
+                case 401:
+                    setSignInError(response.data.error || "Email or password is incorrect");
+                    break;
+                case 500:
+                    setSignInError(response.data.error || "Internal Server Error");
+                    break;
+                default:
+                    break;
             }
 
         } catch (error: any) {
-            setSignInError(error.response.data.message || "Email or password is invalid");
+
+            switch (error.response?.status) {
+                case 401:
+                    setSignInError("Email or password is incorrect");
+                    break;
+                case 500:
+                    setSignInError("Internal Server Error");
+                    break;
+                default:
+                    setSignInError("Internal Server Error");
+                    break;
+            }
         } finally {
             setLoading(false);
         }
@@ -66,6 +87,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
         e.preventDefault();
         setLoading(true);
         setCreateAccountError(null);
+        setCreateAccountSuccess(null);
 
         const email = (e.target as any).create_email.value;
         const username = (e.target as any).create_username.value;
@@ -78,13 +100,35 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                 password
             });
 
-            if (response.data.success) {
-                onSubmit(e);
-            } else {
-                setCreateAccountError(response.data.message || "Failed to create account");
+            switch (response.status) {
+                case 200:
+                    setIsRegistered(true);
+                    setCreateAccountSuccess(response.data.message || "Your account has been created");
+                    onSubmit(e);
+                    break;
+                case 400:
+                    setCreateAccountError(response.data.error || "Email or username already exists");
+                    break;
+                case 500:
+                    setCreateAccountError(response.data.error || "Internal Server Error");
+                    break;
+                default:
+                    break;
             }
+
         } catch (error: any) {
-            setCreateAccountError(error.response.data.message || "Email or username already exists");
+
+            switch (error.response?.status) {
+                case 400:
+                    setCreateAccountError("Email or username already exists");
+                    break;
+                case 500:
+                    setCreateAccountError("Internal Server Error");
+                    break;
+                default:
+                    setCreateAccountError("Internal Server Error");
+                    break;
+            }
         } finally {
             setLoading(false);
         }
@@ -99,14 +143,19 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
     }
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCreateAccountError(null);
         setUsername(e.target.value);
     }
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSignInError(null);
+        setCreateAccountError(null);
         setEmail(e.target.value);
     }
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSignInError(null);
+        setCreateAccountError(null);
         setPassword(e.target.value);
     }
 
@@ -169,27 +218,38 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                         </div>
                         <div className='modal-devider' />
                         <div className='create-acc-container'>
-                            <h2>Create an account</h2>
-                            <form onSubmit={handleCreateAccountSubmit} className='create-acc-form'>
-                                <div className={`create-acc-form-email ${email ? 'has-value' : ''} ${createAccountError ? 'error-form' : ''}`}>
-                                    <label htmlFor="create_email">Email</label>
-                                    <input type="email" id="create_email" placeholder='Email' value={email} onChange={handleEmailChange} />
+                            {isRegistered ? (
+                                <div className='registration-success'>
+                                    <h2>You are registered!</h2>
+                                    <p>Thank you for registering. You can now sign in.</p>
+                                    <button className='submit-button clickable' onClick={handleSignInInfoClick}>Sign In</button>
                                 </div>
-                                <div className={`create-acc-form-username ${username ? 'has-value' : ''} ${createAccountError ? 'error-form' : ''}`}>
-                                    <label htmlFor="create_username">Username</label>
-                                    <input type="text" id="create_username" placeholder='Username' value={username} onChange={handleUsernameChange} />
-                                </div>
-                                <div className={`create-acc-form-password ${password ? 'has-value' : ''}`}>
-                                    <label htmlFor="create_password">Password</label>
-                                    <input type="password" id="create_password" placeholder='Password' value={password} onChange={handlePasswordChange} />
-                                </div>
-                                {createAccountError && <p className='error'>{createAccountError}</p>}
-                                <p className='password-exception'>Use 8 or more characters with a mix of letters, numbers & symbols</p>
-                                <p className='term'>By continuing, you agree to the <a href='/'>Terms of use</a> and <a href='/'>Privacy Policy.</a>
-                                </p>
-                                <button className={`submit-button ${isCreateAccountClickable ? 'clickable' : ''}`} type='submit'>Create an account</button>
-                            </form>
-                            {loading && <p className='loading'>Loading...</p>}
+                            ) : (
+                                <>
+                                    <h2>Create an account</h2>
+                                    <form onSubmit={handleCreateAccountSubmit} className='create-acc-form'>
+                                        <div className={`create-acc-form-email ${email ? 'has-value' : ''} ${createAccountError ? 'error-form' : ''}`}>
+                                            <label htmlFor="create_email">Email</label>
+                                            <input type="email" id="create_email" placeholder='Email' value={email} onChange={handleEmailChange} />
+                                        </div>
+                                        <div className={`create-acc-form-username ${username ? 'has-value' : ''} ${createAccountError ? 'error-form' : ''}`}>
+                                            <label htmlFor="create_username">Username</label>
+                                            <input type="text" id="create_username" placeholder='Username' value={username} onChange={handleUsernameChange} />
+                                        </div>
+                                        <div className={`create-acc-form-password ${password ? 'has-value' : ''}`}>
+                                            <label htmlFor="create_password">Password</label>
+                                            <input type="password" id="create_password" placeholder='Password' value={password} onChange={handlePasswordChange} />
+                                        </div>
+                                        {createAccountError && <p className='error'>{createAccountError}</p>}
+                                        {createAccountSuccess && <p className='success'>{createAccountSuccess}</p>}
+                                        <p className='password-exception'>Use 8 or more characters with a mix of letters, numbers & symbols</p>
+                                        <p className='term'>By continuing, you agree to the <a href='/'>Terms of use</a> and <a href='/'>Privacy Policy.</a>
+                                        </p>
+                                        <button className={`submit-button ${isCreateAccountClickable ? 'clickable' : ''}`} type='submit'>Create an account</button>
+                                    </form>
+                                    {loading && <p className='loading'>Loading...</p>}
+                                </>
+                            )}
                         </div>
                     </section>
                 )}
