@@ -1,0 +1,34 @@
+.profile-page {
+    margin: auto;
+    max-width: 80vw;
+    width: 100%;
+}
+
+.profile-page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.user-profile {
+    width: 40%;
+    padding-top: 90px;
+    height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid black;
+}
+
+.user-profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-profile-img {
+    font-size: 224px;
+}
+
+.user-change-profile-img {
+    font-size: 65px;
+}

@@ -101,10 +101,9 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
             });
 
             switch (response.status) {
-                case 200:
+                case 201:
                     setIsRegistered(true);
                     setCreateAccountSuccess(response.data.message || "Your account has been created");
-                    onSubmit(e);
                     break;
                 case 400:
                     setCreateAccountError(response.data.error || "Email or username already exists");
@@ -182,7 +181,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                                 </div>
                                 {signInError && <p className='error'>{signInError}</p>}
                                 <button className='reset-password'>Reset password</button>
-                                <button className={`submit-button ${isSignInClickable ? 'clickable' : ''} `} type='submit'>Sign In</button>
+                                <button className={`submit-button ${isSignInClickable ? 'clickable' : ''} `} type='submit' disabled={loading || !isSignInClickable}>Sign In</button>
                             </form>
                             <div className='signin-description'>
                                 <p className='term'>By continuing, you agree to the <a href='/'>Terms of use</a> and <a href='/'>Privacy Policy.</a>
@@ -245,7 +244,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                                         <p className='password-exception'>Use 8 or more characters with a mix of letters, numbers & symbols</p>
                                         <p className='term'>By continuing, you agree to the <a href='/'>Terms of use</a> and <a href='/'>Privacy Policy.</a>
                                         </p>
-                                        <button className={`submit-button ${isCreateAccountClickable ? 'clickable' : ''}`} type='submit'>Create an account</button>
+                                        <button className={`submit-button ${isCreateAccountClickable ? 'clickable' : ''}`} type='submit' disabled={loading || !isCreateAccountClickable}>Create an account</button>
                                     </form>
                                     {loading && <p className='loading'>Loading...</p>}
                                 </>
