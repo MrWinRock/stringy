@@ -1,6 +1,6 @@
 .profile-page {
     margin: auto;
-    max-width: 80vw;
+    max-width: 82vw;
     width: 100%;
 }
 
@@ -12,8 +12,8 @@
 }
 
 .user-profile {
-    width: 40%;
-    padding-top: 90px;
+    width: 22%;
+    padding: 50px 30px 0 0;
     height: 100vh;
     background-color: #ffffff;
     border-right: 1px solid black;
@@ -22,7 +22,23 @@
 .user-profile-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+
+.user-image {
+    align-content: center;
+    position: relative;
+}
+
+.user-change-image-bg {
+    position: absolute;
+    bottom: -14px;
+    right: -14px;
+    width: 74.121px;
+    height: 73.739px;
+    background-color: #E0E0E0;
+    border-radius: 50%;
 }
 
 .user-profile-img {
@@ -30,5 +46,29 @@
 }
 
 .user-change-profile-img {
-    font-size: 65px;
+    font-size: 57px;
+    margin: auto;
+}
+
+.user-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 17px;
+}
+
+.profile-username {
+    font-size: 48px;
+}
+
+.profile-community {
+    font-size: 24px;
+    color: #858585;
+}
+
+.profile-bio {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

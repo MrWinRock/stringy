@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './RegisterModal.css';
-import axios from 'axios';
+
+import api from '../../../services/api';
 
 interface ModalProps {
     isShow: boolean;
@@ -32,7 +33,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
     }, [email, password, username]);
 
     const validatePassword = (password: string): boolean => {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
         return passwordRegex.test(password);
     }
 
@@ -45,13 +46,15 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
         const password = (e.target as any).signin_password.value;
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', {
+            const response = await api.post('/auth/login', {
                 email,
                 password
             });
 
             switch (response.status) {
                 case 200:
+                    const token = response.data.token;
+                    localStorage.setItem('token', token);
                     setShowRegisterForm(false);
                     onSubmit(e);
                     break;
@@ -94,7 +97,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
         const password = (e.target as any).create_password.value;
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', {
+            const response = await api.post('/auth/register', {
                 email,
                 username,
                 password
