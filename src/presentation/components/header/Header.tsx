@@ -1,5 +1,5 @@
 // import react
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 // import s_logo from "../../assets/images/s_logo.png";
@@ -9,13 +9,22 @@ import stringy_logo from "../../assets/images/stringy_logo.png";
 import { IoSearch } from "react-icons/io5";
 import { TbSquareRoundedPlus2 } from "react-icons/tb";
 import { GoHome } from "react-icons/go";
-import { IoNotificationsOutline } from "react-icons/io5";
-import RegisterModal from "../modal/RegisterModal";
+import { IoNotificationsOutline, IoSettingsOutline, IoLogInOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
+
+// import components
+import RegisterModal from "../modal/RegisterModal";
 
 const Header: React.FC = () => {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [username, setUsername] = useState("Username");
+
+    useEffect(() => {
+        const signedIn = localStorage.getItem("signedIn") === 'true';
+        setIsSignedIn(signedIn);
+    }, []);
 
     const handleSignIn = () => {
         setShowModal(true);
@@ -28,7 +37,14 @@ const Header: React.FC = () => {
     const handleSignInSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsSignedIn(true);
+        localStorage.setItem("signedIn", 'true');
         setShowModal(false);
+    }
+
+    const handleSignOut = () => {
+        setIsSignedIn(false);
+        localStorage.removeItem("signedIn");
+        localStorage.removeItem("token");
     }
 
     return (
@@ -74,7 +90,11 @@ const Header: React.FC = () => {
                                         <IoNotificationsOutline />
                                     </button>
                                 </li>
-                                <li>
+                                <li
+                                    className="profile-dropdown"
+                                    onMouseEnter={() => setShowDropdown(true)}
+                                    onMouseLeave={() => setShowDropdown(false)}
+                                >
                                     <button
                                         className="button-profile"
                                         type="button"
@@ -84,6 +104,22 @@ const Header: React.FC = () => {
                                             <FaRegUserCircle />
                                         </Link>
                                     </button>
+                                    {showDropdown && (
+                                        <ul className="profile-dropdown">
+                                            <li className="dropdown-profile">
+                                                <Link to="/profile" className="dropdown-profile-link"><FaRegUserCircle className="dropdown-images" /> {username}</Link>
+                                            </li>
+                                            <li className="dropdown-setting">
+                                                <a href="/" className="dropdown-setting-link"><IoSettingsOutline className="dropdown-images" />Settings</a>
+                                            </li>
+                                            <li className="dropdown-signout">
+                                                <button type="button" onClick={handleSignOut} className="dropdown-signout-button">
+                                                    <IoLogInOutline className="dropdown-images" />Sign Out
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    )
+                                    }
                                 </li>
                             </>
                         ) : (
