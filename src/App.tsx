@@ -9,6 +9,7 @@ import ProfilePage from "./presentation/components/pages/ProfilePage";
 
 // For test api call
 import TestAPI from "./TestAPI";
+import SettingPage from "./presentation/components/pages/SettingPage";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/setting" element={<SettingPage />} />
         <Route path="/testapi" element={<TestAPI />} />
       </Routes>
     </Router>

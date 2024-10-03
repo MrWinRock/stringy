@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { decodeToken } from "./../../../utils/authUtil";
+
 // import s_logo from "../../assets/images/s_logo.png";
 import stringy_logo from "../../assets/images/stringy_logo.png";
 
@@ -24,6 +26,14 @@ const Header: React.FC = () => {
     useEffect(() => {
         const signedIn = localStorage.getItem("signedIn") === 'true';
         setIsSignedIn(signedIn);
+    }, []);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            const decodedToken = decodeToken(token);
+            setUsername(decodedToken.username);
+        }
     }, []);
 
     const handleSignIn = () => {
@@ -110,7 +120,7 @@ const Header: React.FC = () => {
                                                 <Link to="/profile" className="dropdown-profile-link"><FaRegUserCircle className="dropdown-images" /> {username}</Link>
                                             </li>
                                             <li className="dropdown-setting">
-                                                <a href="/" className="dropdown-setting-link"><IoSettingsOutline className="dropdown-images" />Settings</a>
+                                                <Link to="/setting" className="dropdown-setting-link"><IoSettingsOutline className="dropdown-images" />Settings</Link>
                                             </li>
                                             <li className="dropdown-signout">
                                                 <button type="button" onClick={handleSignOut} className="dropdown-signout-button">
