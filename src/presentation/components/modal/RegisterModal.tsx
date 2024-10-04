@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './RegisterModal.css';
-import axios from 'axios';
+
+import api from '../../../services/api';
 
 interface ModalProps {
     isShow: boolean;
@@ -32,7 +33,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
     }, [email, password, username]);
 
     const validatePassword = (password: string): boolean => {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
         return passwordRegex.test(password);
     }
 
@@ -45,13 +46,15 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
         const password = (e.target as any).signin_password.value;
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', {
+            const response = await api.post('/auth/login', {
                 email,
                 password
             });
 
             switch (response.status) {
                 case 200:
+                    const token = response.data.token;
+                    localStorage.setItem('token', token);
                     setShowRegisterForm(false);
                     onSubmit(e);
                     break;
@@ -94,17 +97,16 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
         const password = (e.target as any).create_password.value;
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', {
+            const response = await api.post('/auth/register', {
                 email,
                 username,
                 password
             });
 
             switch (response.status) {
-                case 200:
+                case 201:
                     setIsRegistered(true);
                     setCreateAccountSuccess(response.data.message || "Your account has been created");
-                    onSubmit(e);
                     break;
                 case 400:
                     setCreateAccountError(response.data.error || "Email or username already exists");
@@ -182,7 +184,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                                 </div>
                                 {signInError && <p className='error'>{signInError}</p>}
                                 <button className='reset-password'>Reset password</button>
-                                <button className={`submit-button ${isSignInClickable ? 'clickable' : ''} `} type='submit'>Sign In</button>
+                                <button className={`submit-button ${isSignInClickable ? 'clickable' : ''} `} type='submit' disabled={loading || !isSignInClickable}>Sign In</button>
                             </form>
                             <div className='signin-description'>
                                 <p className='term'>By continuing, you agree to the <a href='/'>Terms of use</a> and <a href='/'>Privacy Policy.</a>
@@ -245,7 +247,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                                         <p className='password-exception'>Use 8 or more characters with a mix of letters, numbers & symbols</p>
                                         <p className='term'>By continuing, you agree to the <a href='/'>Terms of use</a> and <a href='/'>Privacy Policy.</a>
                                         </p>
-                                        <button className={`submit-button ${isCreateAccountClickable ? 'clickable' : ''}`} type='submit'>Create an account</button>
+                                        <button className={`submit-button ${isCreateAccountClickable ? 'clickable' : ''}`} type='submit' disabled={loading || !isCreateAccountClickable}>Create an account</button>
                                     </form>
                                     {loading && <p className='loading'>Loading...</p>}
                                 </>
