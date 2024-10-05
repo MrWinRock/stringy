@@ -4,8 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
+    padding: 10px 29px;
+    background-color: #212830;
     border-bottom: 1px solid #000;
     max-height: 10vh;
 }
@@ -22,6 +22,7 @@
 .logo {
     width: auto;
     color: #000;
+    margin-left: 1rem;
 }
 
 .logo img {
@@ -102,6 +103,7 @@
     justify-content: center;
     align-items: center;
     gap: 7px;
+    color: white;
 }
 
 .create-post-icon {
@@ -202,9 +204,14 @@
     display: flex;
     align-items: center;
     gap: 22px;
-    padding: 14px 100px 14px 10px;
+    padding: 14px 140px 14px 10px;
 }
 
 .dropdown-images {
-    font-size: 24px;
+    font-size: 24px !important;
+}
+
+.dropdown-texts {
+    width: 100%;
+    text-align: left;
 }

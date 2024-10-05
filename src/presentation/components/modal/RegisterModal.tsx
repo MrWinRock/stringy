@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import './RegisterModal.css';
-
+import { ModalProps } from './types';
 import api from '../../../services/api';
 
-interface ModalProps {
-    isShow: boolean;
-    onClose: () => void;
-    onSubmit: (e: React.FormEvent) => void;
-}
-
-const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
+const RegisterModal: React.FC<ModalProps> = forwardRef(({ isShow, onClose, onSubmit }, ref) => {
     const [showSignIn, setShowSignIn] = useState(true);
-    const [showRegisterForm, setShowRegisterForm] = useState(true);
     const [loading, setLoading] = useState(false);
     const [signInError, setSignInError] = useState<string | null>(null);
     const [createAccountError, setCreateAccountError] = useState<string | null>(null);
@@ -55,7 +48,6 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
                 case 200:
                     const token = response.data.token;
                     localStorage.setItem('token', token);
-                    setShowRegisterForm(false);
                     onSubmit(e);
                     break;
                 case 401:
@@ -161,6 +153,20 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
         setPassword(e.target.value);
     }
 
+    useImperativeHandle(ref, () => ({
+        handleSignOut
+    }));
+
+    const handleSignOut = () => {
+        setIsRegistered(false);
+        setEmail('');
+        setUsername('');
+        setPassword('');
+        setSignInError(null);
+        setCreateAccountError(null);
+        setCreateAccountSuccess(null);
+    }
+
     if (!isShow) {
         return null;
     }
@@ -169,7 +175,7 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
         <div className="register-modal">
             <div className='modal-bg' onClick={onClose} />
             <div className='modal-container'>
-                {showRegisterForm && showSignIn ? (
+                {showSignIn ? (
                     <section className='show-signin'>
                         <div className='signin-container'>
                             <h2>Sign In</h2>
@@ -258,6 +264,6 @@ const RegisterModal: React.FC<ModalProps> = ({ isShow, onClose, onSubmit }) => {
             </div>
         </div>
     );
-}
+});
 
 export default RegisterModal;
