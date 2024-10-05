@@ -1,12 +1,15 @@
 import Header from "../header/Header";
 import Profile from "../profile/Profile";
 
+import './Pages.css'
 
 const ProfilePage: React.FC = () => {
     return (
         <>
             <Header />
-            <Profile />
+            <section className="content">
+                <Profile />
+            </section>
         </>
     )
 }
