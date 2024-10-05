@@ -1,4 +1,3 @@
-// import react
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
@@ -23,6 +22,10 @@ const Header: React.FC = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [username, setUsername] = useState("Username");
 
+    const registerModalRef = React.useRef<any>();
+
+    const token = localStorage.getItem("token");
+
     useEffect(() => {
         const signedIn = localStorage.getItem("signedIn") === 'true';
         setIsSignedIn(signedIn);
@@ -34,7 +37,7 @@ const Header: React.FC = () => {
             const decodedToken = decodeToken(token);
             setUsername(decodedToken.username);
         }
-    }, []);
+    }, [token]);
 
     const handleSignIn = () => {
         setShowModal(true);
@@ -55,6 +58,10 @@ const Header: React.FC = () => {
         setIsSignedIn(false);
         localStorage.removeItem("signedIn");
         localStorage.removeItem("token");
+
+        if (registerModalRef.current) {
+            registerModalRef.current.handleSignOut();
+        }
     }
 
     return (
@@ -79,12 +86,12 @@ const Header: React.FC = () => {
                     <ul className="header-posts">
                         <li>
                             <button type="button" className="create-post-button">
-                                <TbSquareRoundedPlus2 className="create-post-icon" /> Create Post
+                                <TbSquareRoundedPlus2 className="create-post-icon" color="white" /> <p>Create Post</p>
                             </button>
                         </li>
                         <li>
                             <Link to="/" className="go-home-button">
-                                <GoHome />
+                                <GoHome color="white" />
                             </Link>
                         </li>
                     </ul>
@@ -97,7 +104,7 @@ const Header: React.FC = () => {
                                         type="button"
                                         aria-label="Notification"
                                     >
-                                        <IoNotificationsOutline />
+                                        <IoNotificationsOutline color="white" />
                                     </button>
                                 </li>
                                 <li
@@ -110,26 +117,24 @@ const Header: React.FC = () => {
                                         type="button"
                                         aria-label="Profile">
                                         <Link to="/profile" className="profile-image">
-                                            {/* <img src="#" alt="profile-image" /> */}
-                                            <FaRegUserCircle />
+                                            <FaRegUserCircle color="white" />
                                         </Link>
                                     </button>
                                     {showDropdown && (
                                         <ul className="profile-dropdown">
                                             <li className="dropdown-profile">
-                                                <Link to="/profile" className="dropdown-profile-link"><FaRegUserCircle className="dropdown-images" /> {username}</Link>
+                                                <Link to="/profile" className="dropdown-profile-link"><FaRegUserCircle className="dropdown-images" /> <p className="dropdown-texts">{username}</p></Link>
                                             </li>
                                             <li className="dropdown-setting">
-                                                <Link to="/setting" className="dropdown-setting-link"><IoSettingsOutline className="dropdown-images" />Settings</Link>
+                                                <Link to="/setting" className="dropdown-setting-link"><IoSettingsOutline className="dropdown-images" /><p className="dropdown-texts">Settings</p></Link>
                                             </li>
                                             <li className="dropdown-signout">
                                                 <button type="button" onClick={handleSignOut} className="dropdown-signout-button">
-                                                    <IoLogInOutline className="dropdown-images" />Sign Out
+                                                    <IoLogInOutline className="dropdown-images" /><p className="dropdown-texts">Sign Out</p>
                                                 </button>
                                             </li>
                                         </ul>
-                                    )
-                                    }
+                                    )}
                                 </li>
                             </>
                         ) : (
@@ -145,7 +150,9 @@ const Header: React.FC = () => {
             <RegisterModal
                 isShow={showModal}
                 onClose={handleCloseModal}
-                onSubmit={handleSignInSubmit} />
+                onSubmit={handleSignInSubmit}
+            />
+
         </nav>
     );
 };
