@@ -1,4 +1,3 @@
-// src/services/uploadService.ts
 import api from "./api";
 
 export const uploadService = async (
