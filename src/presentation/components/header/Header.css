@@ -151,6 +151,12 @@
     padding: .5rem 1.4rem;
 }
 
+.profile-picture {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
 /* Dropdown Menu */
 
 .profile-dropdown {
@@ -208,7 +214,13 @@
 }
 
 .dropdown-images {
-    font-size: 24px !important;
+    font-size: 30px !important;
+}
+
+.dropdown-profile-picture {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
 
 .dropdown-texts {
