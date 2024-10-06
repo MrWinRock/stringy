@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import { decodeToken } from "./../../../utils/authUtil";
+import { getProfilePicture } from "../../../services/uploadService"; // Import the existing function
 
 // import s_logo from "../../assets/images/s_logo.png";
 import stringy_logo from "../../assets/images/stringy_logo.png";
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
     const [showModal, setShowModal] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const [username, setUsername] = useState("Username");
+    const [profilePictureUrl, setProfilePictureUrl] = useState<string | null>(null);
 
     const registerModalRef = React.useRef<any>();
 
@@ -36,8 +38,18 @@ const Header: React.FC = () => {
         if (token) {
             const decodedToken = decodeToken(token);
             setUsername(decodedToken.username);
+            fetchProfilePicture(decodedToken.userId);
         }
     }, [token]);
+
+    const fetchProfilePicture = async (userId: number) => {
+        try {
+            const url = await getProfilePicture(userId);
+            setProfilePictureUrl(url);
+        } catch (error) {
+            console.error("Error fetching profile picture:", error);
+        }
+    };
 
     const handleSignIn = () => {
         setShowModal(true);
@@ -117,13 +129,24 @@ const Header: React.FC = () => {
                                         type="button"
                                         aria-label="Profile">
                                         <Link to="/profile" className="profile-image">
-                                            <FaRegUserCircle color="white" />
+                                            {profilePictureUrl ? (
+                                                <img src={profilePictureUrl} alt="Profile" className="profile-picture" />
+                                            ) : (
+                                                <FaRegUserCircle color="white" />
+                                            )}
                                         </Link>
                                     </button>
                                     {showDropdown && (
                                         <ul className="profile-dropdown">
                                             <li className="dropdown-profile">
-                                                <Link to="/profile" className="dropdown-profile-link"><FaRegUserCircle className="dropdown-images" /> <p className="dropdown-texts">{username}</p></Link>
+                                                <Link to="/profile" className="dropdown-profile-link">
+                                                    {profilePictureUrl ? (
+                                                        <img src={profilePictureUrl} alt="Profile" className="dropdown-profile-picture" />
+                                                    ) : (
+                                                        <FaRegUserCircle className="dropdown-images" />
+                                                    )}
+                                                    <p className="dropdown-texts">{username}</p>
+                                                </Link>
                                             </li>
                                             <li className="dropdown-setting">
                                                 <Link to="/setting" className="dropdown-setting-link"><IoSettingsOutline className="dropdown-images" /><p className="dropdown-texts">Settings</p></Link>

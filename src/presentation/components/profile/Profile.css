@@ -12,7 +12,7 @@
 }
 
 .user-profile {
-    width: 22%;
+    width: 24%;
     padding: 50px 30px 0 0;
     height: 100vh;
     background-color: #ffffff;
@@ -45,6 +45,13 @@
     font-size: 224px;
 }
 
+.user-profile-picture {
+    width: 224px;
+    height: 224px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .user-change-profile-img {
     font-size: 57px;
     margin: auto;
@@ -58,6 +65,7 @@
 }
 
 .profile-username {
+    margin-top: 1.5rem;
     font-size: 48px;
 }
 
