@@ -6,8 +6,8 @@ const AboutPage: React.FC = () => {
     return (
         <>
             <Header />
-            <Sidebar />
             <section className="content">
+                <Sidebar />
                 <About />
             </section>
         </>
