@@ -5,11 +5,11 @@ import About from "../about/About";
 const AboutPage: React.FC = () => {
     return (
         <>
-        <Header />
-        <Sidebar />
-        <section className="content">
-            <About />
-        </section>
+            <Header />
+            <Sidebar />
+            <section className="content">
+                <About />
+            </section>
         </>
     );
 }
