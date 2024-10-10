@@ -1,20 +1,39 @@
+// src/presentation/components/profile/Profile.tsx
 import "./Profile.css";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getProfilePicture } from "../../../services/uploadService";
+import { decodeToken } from "../../../utils/authUtil";
 
 // icons import
 import { FaRegUserCircle } from "react-icons/fa";
 import { BsCamera } from "react-icons/bs";
 
 const Profile: React.FC = () => {
-
     const [username, setUsername] = useState<string>("Username");
     const [communityJoined, setCommunityJoined] = useState<number>(0);
     const [bio, setBio] = useState<string>(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel lectus posuere, aliquet augue in, convallis arcu."
     );
-    const [socials, setSocials] = useState<string[]>(["facebook.com", "reddit.com"]);
+    const [profilePictureUrl, setProfilePictureUrl] = useState<string | null>(null);
 
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (token) {
+            const decodedToken = decodeToken(token);
+            setUsername(decodedToken.username);
+            fetchProfilePicture(decodedToken.userId);
+        }
+    }, [token]);
+
+    const fetchProfilePicture = async (userId: number) => {
+        try {
+            const url = await getProfilePicture(userId);
+            setProfilePictureUrl(url);
+        } catch (error) {
+            console.error("Error fetching profile picture:", error);
+        }
+    };
 
     return (
         <div className="profile-page">
@@ -22,7 +41,11 @@ const Profile: React.FC = () => {
                 <div className="user-profile">
                     <div className="user-profile-container">
                         <div className="user-image">
-                            <FaRegUserCircle className="user-profile-img" />
+                            {profilePictureUrl ? (
+                                <img src={profilePictureUrl} alt="Profile" className="user-profile-picture" />
+                            ) : (
+                                <FaRegUserCircle className="user-profile-img" />
+                            )}
                             <button type="button" className="user-change-image-bg" title="Change profile image">
                                 <BsCamera className="user-change-profile-img" />
                             </button>
