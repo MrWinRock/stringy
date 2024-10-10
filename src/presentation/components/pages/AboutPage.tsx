@@ -1,17 +1,17 @@
-import Sidebar from "../content/sidebar/Sidebar";
 import Header from "../header/Header";
+import Sidebar from "../content/sidebar/Sidebar";
+import About from "../about/About";
 
-import './Pages.css'
-
-const HomePage: React.FC = () => {
+const AboutPage: React.FC = () => {
     return (
         <>
             <Header />
             <section className="content">
                 <Sidebar />
+                <About />
             </section>
         </>
     );
-};
+}
 
-export default HomePage;
+export default AboutPage;
