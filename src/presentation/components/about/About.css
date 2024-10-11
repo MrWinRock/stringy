@@ -1,0 +1,67 @@
+.about {
+  text-align: center;
+  margin: 0 auto;
+  width: 100vw;
+}
+
+.about-container {
+  width: 100%;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 0;
+  padding-left: 4rem;
+  background: #212830;
+}
+
+.about-header h2 {
+  color: #95cefd;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.about-website {
+  margin-top: 2rem;
+  margin-left: 3rem;
+  text-align: left;
+}
+
+.about-website p {
+  color: #212830;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.team-members {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-member p {
+  color: #000;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.team-member img {
+  width: 221px;
+  border-radius: 50%;
+  object-fit: cover;
+}
