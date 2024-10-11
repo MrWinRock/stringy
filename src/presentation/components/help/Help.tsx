@@ -33,7 +33,7 @@ const Help: React.FC = () => {
                 <label htmlFor="insert-message">Message</label>
                 <input type="text" id="insert-message" placeholder="Message" />
               </div>
-              <button className="help-send-button"> send</button>
+              <button type="submit" className="help-send-button"> send</button>
             </form>
           </div>
         </div>

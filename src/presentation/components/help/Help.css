@@ -4,13 +4,15 @@
 
 .help-container {
   width: 100%;
-  background-color: #ffffff;
 }
 
 .help-header {
-  height: 115px;
-  width: 100%;
-  background-color: #212830;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 0;
+  padding-left: 4rem;
+  background: #212830;
 }
 
 .help-content {
