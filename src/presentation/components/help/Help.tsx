@@ -22,18 +22,26 @@ const Help: React.FC = () => {
             <form className="help-insert-massage">
               <div className="help-insert-username">
                 <label htmlFor="insert-username">Username</label>
-                <input
-                  type="text" id="insert-username" placeholder="Username" />
+                
+                <p>
+                  <input type="text" id="insert-username" />
+                </p>
               </div>
               <div className="help-insert-email">
                 <label htmlFor="insert-email">Email</label>
-                <input type="text" id="insert-email" placeholder="Email" />
+                <p>
+                  <input type="text" id="insert-email" />
+                </p>
               </div>
               <div className="help-insert-message">
                 <label htmlFor="insert-message">Message</label>
-                <input type="text" id="insert-message" placeholder="Message" />
+                <p>
+                  <input type="text" id="insert-message" />
+                </p>
               </div>
-              <button type="submit" className="help-send-button"> send</button>
+              <button type="submit" id="submit" className="help-send-button">
+                Send
+              </button>
             </form>
           </div>
         </div>
