@@ -54,24 +54,22 @@ const Sidebar = () => {
         <div className="sidebar-section">
           <button
             onClick={handleCommunitiesClick}
-            className={`communities-dropdown ${
-              dropdownCommunities ? "show-community" : ""
-            }`}
+            className={`communities-dropdown ${dropdownCommunities ? "show-community" : ""
+              }`}
           >
             <p>Communities</p>
             <FaChevronDown
-              className={`dropdown-icon ${
-                dropdownCommunities ? "show-dropdown" : ""
-              }`}
+              className={`dropdown-icon ${dropdownCommunities ? "show-dropdown" : ""
+                }`}
             />
           </button>
           <div
             className={`dropdown-content ${dropdownCommunities ? "show" : ""}`}
           >
-            <button className="sidebar-create-community sidebar-button">
+            <Link to="/create-post" className="sidebar-create-community sidebar-button">
               <LuPlusSquare className="sidebar-icon" />
               <p>Create a Community</p>
-            </button>
+            </Link>
             <ul className="sidebar-nav">
               <li>
                 <button className="sidebar-button">
@@ -84,15 +82,13 @@ const Sidebar = () => {
         <div className="sidebar-section">
           <button
             onClick={handleResourcesClick}
-            className={`resources-dropdown ${
-              dropdownResources ? "show-resource" : ""
-            }`}
+            className={`resources-dropdown ${dropdownResources ? "show-resource" : ""
+              }`}
           >
             <p>Resources</p>
             <FaChevronDown
-              className={`dropdown-icon ${
-                dropdownResources ? "show-dropdown" : ""
-              }`}
+              className={`dropdown-icon ${dropdownResources ? "show-dropdown" : ""
+                }`}
             />
           </button>
           <div

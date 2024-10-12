@@ -6,11 +6,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // Import components
 import HomePage from "./presentation/components/pages/HomePage";
 import ProfilePage from "./presentation/components/pages/ProfilePage";
+import SettingPage from "./presentation/components/pages/SettingPage";
+import AboutPage from "./presentation/components/pages/AboutPage";
+import CreatePostPage from "./presentation/components/pages/CreatePostPage";
 
 // For test api call
 import TestAPI from "./TestAPI";
-import SettingPage from "./presentation/components/pages/SettingPage";
-import AboutPage from "./presentation/components/pages/AboutPage";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Route path="/setting" element={<SettingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/testapi" element={<TestAPI />} />
+        <Route path="/create-post" element={<CreatePostPage />} />
       </Routes>
     </Router>
   );
