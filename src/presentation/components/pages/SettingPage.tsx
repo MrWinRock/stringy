@@ -6,13 +6,13 @@ import './Pages.css'
 
 const SettingPage: React.FC = () => {
     return (
-        <>
+        <div className="content">
             <Header />
-            <section className="content">
-                <Sidebar />
+            <Sidebar />
+            <section className="main-content">
                 <Setting />
             </section>
-        </>
+        </div>
     );
 }
 

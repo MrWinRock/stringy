@@ -5,12 +5,12 @@ import './Pages.css'
 
 const ProfilePage: React.FC = () => {
     return (
-        <>
+        <div className="content">
             <Header />
-            <section className="content">
-                <Profile />
+            <Profile />
+            <section className="main-content">
             </section>
-        </>
+        </div>
     )
 }
 

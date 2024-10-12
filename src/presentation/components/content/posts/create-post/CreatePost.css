@@ -1,0 +1,136 @@
+.create-post {
+    width: 89%;
+    margin: 2rem 5rem;
+}
+
+.create-post-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-post-header {
+    margin-bottom: 1rem;
+}
+
+.create-post-header h1 {
+    color: #000;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.create-post-header p {
+    color: #838080;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.create-post-options {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.create-post-text,
+.create-post-image,
+.create-post-community {
+    display: flex;
+}
+
+.create-post-options-button,
+.create-post-options-button,
+.create-post-options-button {
+    border-radius: 10px 10px 0px 0px;
+    padding: 0.5rem 4rem;
+}
+
+.create-post-options-button.isSelected,
+.create-post-options-button.isSelected,
+.create-post-options-button.isSelected {
+    border: 1px solid #9E9E9E;
+    background: #F0F0F0;
+    padding: 0.5rem 4rem;
+}
+
+.create-post-options-button p,
+.create-post-options-button p,
+.create-post-options-button p {
+    color: #000;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.create-post-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.create-post-title input {
+    width: 80%;
+    height: 4rem;
+    color: black;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 1rem;
+    border-radius: 25px;
+    border: 1px solid #9D9B9B;
+    background: #FFF;
+    margin: 1rem 2rem;
+}
+
+.editor-devider {
+    height: 1px;
+    margin: 1rem 0;
+    background: #9D9B9B;
+}
+
+.editor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.editor-container {
+    width: 80%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    cursor: text;
+    color: #000;
+    font-size: 30px;
+    font-weight: 400;
+    border-radius: 25px;
+    border: 1px solid #9D9B9B;
+    margin: 0 2rem;
+    min-height: 24rem;
+    overflow: hidden;
+    transition: height 0.2s ease;
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.toolbar button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.public-DraftStyleDefault-pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+}

@@ -97,9 +97,9 @@ const Header: React.FC = () => {
                 <div className="header-nav">
                     <ul className="header-posts">
                         <li>
-                            <button type="button" className="create-post-button">
+                            <Link to="/create-post" className="create-post-button">
                                 <TbSquareRoundedPlus2 className="create-post-icon" color="white" /> <p>Create Post</p>
-                            </button>
+                            </Link>
                         </li>
                         <li>
                             <Link to="/" className="go-home-button">

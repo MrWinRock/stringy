@@ -1,0 +1,21 @@
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.toolbar button {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #9D9B9B;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.toolbar button.active {
+    color: #000;
+}
