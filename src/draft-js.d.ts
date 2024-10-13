@@ -19,8 +19,14 @@ declare module "draft-js" {
 
   export class EditorState {
     static createEmpty(): EditorState;
-    getCurrentInlineStyle(): any; // Added method to get current inline style
+    getCurrentContent(): ContentState;
   }
+
+  export class ContentState {}
+
+  export function convertToRaw(
+    contentState: ContentState
+  ): RawDraftContentState;
 
   export namespace RichUtils {
     function toggleInlineStyle(
@@ -35,6 +41,8 @@ declare module "draft-js" {
       editorState: EditorState,
       command: string
     ): EditorState | null;
-    function getCurrentBlockType(editorState: EditorState): string; // Added method to get current block type
+    function getCurrentBlockType(editorState: EditorState): string;
   }
+
+  export interface RawDraftContentState {}
 }
