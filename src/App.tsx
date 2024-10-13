@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-
 // Import components
 import HomePage from "./presentation/components/pages/HomePage";
 import ProfilePage from "./presentation/components/pages/ProfilePage";
@@ -12,6 +11,7 @@ import CreatePostPage from "./presentation/components/pages/CreatePostPage";
 
 // For test api call
 import TestAPI from "./TestAPI";
+import InPostPage from "./presentation/components/pages/InPostPage";
 
 const App: React.FC = () => {
   return (
@@ -23,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/testapi" element={<TestAPI />} />
         <Route path="/create-post" element={<CreatePostPage />} />
+        <Route path="/:roomname/:id" element={<InPostPage />} />
       </Routes>
     </Router>
   );

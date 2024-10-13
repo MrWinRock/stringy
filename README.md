@@ -21,7 +21,7 @@ Welcome to the Blog System project! This project is a simple and efficient blog 
     ```
 3. Install dependencies:
     ```sh
-    npm install
+    npm install --legacy-peer-deps
     ```
 
 ## Usage

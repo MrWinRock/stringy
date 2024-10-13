@@ -1,7 +1,6 @@
 .sidebar {
     height: 100%;
     width: 100%;
-    /* Full width of the grid column */
     border-right: 1px solid black;
     transition: width 0.3s ease;
     background-color: #fff;
