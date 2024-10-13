@@ -1,62 +1,69 @@
-import { useEffect, useState } from "react";
-import api from './../../../../services/api';
-import { decodeToken } from "../../../../utils/authUtil";
-
-// import icons
 import { SlOptions } from "react-icons/sl";
+import { convertFromRaw, RawDraftContentState } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
+import { Link } from "react-router-dom";
 
-const Post: React.FC = () => {
-    const [roomname, setRoomname] = useState<string>('Roomname');
-    const [username, setUsername] = useState<string>('Username');
-    const [title, setTitle] = useState<string>('Title');
-    const [content, setContent] = useState<string>('Content');
+import stringy_logo from "../../../assets/images/logo_stringy.png";
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            const decodedToken = decodeToken(token);
-            setUsername(decodedToken.username);
-        }
-    }, []);
+import "./Post.css";
 
-    useEffect(() => {
-        const fetchRoomname = async () => {
-            try {
-                const response = await api.get('/room');
-                setRoomname(response.data.roomname);
-            } catch (error) {
-                console.error("Error fetching room name:", error);
-            }
-        };
+interface PostProps {
+    id: string;
+    roomname: string;
+    username: string;
+    title: string;
+    content: string;
+    room_picture_url?: string;
+    post_image_url?: string;
+}
 
-        fetchRoomname();
-    }, []);
+const Post: React.FC<PostProps> = ({ id, roomname, username, title, content, room_picture_url, post_image_url }) => {
+
+    let htmlContent = content;
+
+    try {
+        const rawContentState: RawDraftContentState = JSON.parse(content);
+        const contentState = convertFromRaw(rawContentState);
+        htmlContent = stateToHTML(contentState);
+    } catch (e) {
+        console.error("Error parsing content:", e);
+    }
 
     return (
         <section className="post">
-            <div className="post-container">
-                <div className="post-header">
-                    <div className="post-room">
-                        <div className="post-roomname">
-                            <p>{roomname}</p>
+            <Link to={`/${roomname}/${id}`} state={{ id, roomname, username, title, content, room_picture_url, post_image_url }}>
+                <div className="post-container">
+                    <div className="post-header">
+                        <div className="post-room">
+                            {room_picture_url ? (
+                                <img src={room_picture_url} alt="Room" />
+                            ) : (
+                                <img src={stringy_logo} alt="stringy logo" />
+                            )}
+                            <div className="post-name">
+                                <p className="post-roomname">{roomname}</p>
+                                <p className="post-username">{username}</p>
+                            </div>
                         </div>
-                        <div className="post-username">
-                            <p>{username}</p>
+                        <div className="post-option">
+                            <SlOptions className="post-icons" />
                         </div>
                     </div>
-                    <div className="post-option">
-                        <SlOptions className="post-icons" />
+                    <div className="post-body">
+                        <div className="post-title">
+                            <h1>{title}</h1>
+                        </div>
+                        <div className="post-content">
+                            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                        </div>
+                        {post_image_url && (
+                            <div className="post-image">
+                                <img src={post_image_url} alt="Post" />
+                            </div>
+                        )}
                     </div>
                 </div>
-                <div className="post-body">
-                    <div className="post-title">
-                        <h1>{title}</h1>
-                    </div>
-                    <div className="post-image">
-                        <img src="/" alt="roomimg" />
-                    </div>
-                </div>
-            </div>
+            </Link>
         </section>
     );
 }

@@ -28,6 +28,8 @@ declare module "draft-js" {
     contentState: ContentState
   ): RawDraftContentState;
 
+  export function convertFromRaw(rawState: RawDraftContentState): ContentState;
+
   export namespace RichUtils {
     function toggleInlineStyle(
       editorState: EditorState,
