@@ -11,18 +11,31 @@ const Help: React.FC = () => {
           </div>
         </div>
         <div className="help-content">
-          <div className="logo">
-            <img src={s_logo} alt="Stringy" />
-          </div>
-          <div className="text-location">
-            <p>String (Header office)</p>
-            <p>1 ถนน อู่ทองนอก แขวงดุสิต เขตดุสิต กรุงเทพมหานคร 10300</p>
+          <div className="content-logo-text">
+            <div className="logo">
+              <img
+                src={s_logo}
+                alt="Stringy"
+                style={{
+                  width: "256px",
+                  height: "256px",
+                  objectFit: "fill",
+                }}
+              />
+            </div>
+            <div className="text-location">
+              <p>
+                <h2>String (Header office)</h2>
+              </p>
+              <p>1 ถนน อู่ทองนอก แขวงดุสิต</p>
+              <p> เขตดุสิต กรุงเทพมหานคร 10300</p>
+            </div>
           </div>
           <div className="help-insert">
             <form className="help-insert-massage">
               <div className="help-insert-username">
                 <label htmlFor="insert-username">Username</label>
-                
+
                 <p>
                   <input type="text" id="insert-username" />
                 </p>

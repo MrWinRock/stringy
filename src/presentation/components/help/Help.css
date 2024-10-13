@@ -16,15 +16,38 @@
 }
 
 .help-content {
+  margin-top: 40px;
+  display: flex;
+
+}
+
+.content-logo-text {
+  margin-left: 80px;
+  flex-direction: row;
+}
+
+.logo {
+  margin: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-location {
+  font-size: 30px;
+  margin-left: 20px;
+
 }
 
 .help-insert {
+  margin-left:10%;
+  margin-top: 3%;
   display: flex;
   justify-content: flex-end;
-  border: 1px solid black;
-  width: 79%;
-  height: 35%;
+  width: 40%;
+  height: 20%;
   background-color: #ffffff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   border-radius: 15px; 
 }
 
@@ -37,7 +60,6 @@
   flex-direction: column;
   display: flex;
 }
-
 
 label {
   color: #111;
@@ -86,11 +108,9 @@ label {
   border: none;
   margin-bottom: 20px;
   color: #000000;
-  height: 40vh;
+
 
 }
-
-
 
 .help-title {
   margin-left: 10%;
