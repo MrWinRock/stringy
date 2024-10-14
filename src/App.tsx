@@ -12,6 +12,8 @@ import CreatePostPage from "./presentation/components/pages/CreatePostPage";
 // For test api call
 import TestAPI from "./TestAPI";
 import InPostPage from "./presentation/components/pages/InPostPage";
+import RoomPage from "./presentation/components/pages/RoomPage";
+import CreateRoomPage from "./presentation/components/pages/CreateRoomPage";
 
 const App: React.FC = () => {
   return (
@@ -24,6 +26,8 @@ const App: React.FC = () => {
         <Route path="/testapi" element={<TestAPI />} />
         <Route path="/create-post" element={<CreatePostPage />} />
         <Route path="/:roomname/:id" element={<InPostPage />} />
+        <Route path="/create-room" element={<CreateRoomPage />} />
+        <Route path="/:roomname" element={<RoomPage />} />
       </Routes>
     </Router>
   );

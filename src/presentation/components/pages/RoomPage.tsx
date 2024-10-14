@@ -15,7 +15,7 @@ interface PostData {
     post_image_url?: string;
 }
 
-const HomePage: React.FC = () => {
+const RoomPage: React.FC = () => {
     const [posts, setPosts] = useState<PostData[]>([]);
 
     useEffect(() => {
@@ -62,4 +62,4 @@ const HomePage: React.FC = () => {
     );
 };
 
-export default HomePage;
+export default RoomPage;
