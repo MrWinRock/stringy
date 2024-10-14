@@ -66,7 +66,7 @@ const Sidebar = () => {
           <div
             className={`dropdown-content ${dropdownCommunities ? "show" : ""}`}
           >
-            <Link to="/create-post" className="sidebar-create-community sidebar-button">
+            <Link to="/create-room" className="sidebar-create-community sidebar-button">
               <LuPlusSquare className="sidebar-icon" />
               <p>Create a Community</p>
             </Link>

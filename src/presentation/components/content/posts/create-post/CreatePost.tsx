@@ -252,7 +252,7 @@ const CreatePost: React.FC = () => {
                         {isCommunityButtonSelected ? (
                             <button type="submit" className="next-post">Post</button>
                         ) : (
-                            <button type="button" onClick={handleNextClick} className="next-post">Next</button>
+                            <div onClick={handleNextClick} className="next-post">Next</div>
                         )}
                     </div>
                 </div>
