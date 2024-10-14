@@ -1,56 +1,40 @@
+import stringy_logo from "../../assets/images/logo_stringy.png";
 import "./Help.css";
-import s_logo from "../../assets/images/s_logo.png";
 
 const Help: React.FC = () => {
   return (
     <div className="help">
       <div className="help-container">
         <div className="help-header">
-          <div className="help-title">
-            <p>Need help?</p>
-          </div>
+          <h2>Need help?</h2>
         </div>
         <div className="help-content">
           <div className="content-logo-text">
-            <div className="logo">
+            <div className="help-logo">
               <img
-                src={s_logo}
+                src={stringy_logo}
                 alt="Stringy"
-                style={{
-                  width: "256px",
-                  height: "256px",
-                  objectFit: "fill",
-                }}
               />
             </div>
             <div className="text-location">
-              <p>
-                <h2>String (Header office)</h2>
-              </p>
+              <h2>String (Header office)</h2>
               <p>1 ถนน อู่ทองนอก แขวงดุสิต</p>
               <p> เขตดุสิต กรุงเทพมหานคร 10300</p>
             </div>
           </div>
           <div className="help-insert">
-            <form className="help-insert-massage">
-              <div className="help-insert-username">
-                <label htmlFor="insert-username">Username</label>
-
-                <p>
-                  <input type="text" id="insert-username" />
-                </p>
+            <form className="help-insert-container">
+              <div className="help-insert-name">
+                <label htmlFor="insert-name">Full name</label>
+                <input type="text" id="insert-name" />
               </div>
               <div className="help-insert-email">
                 <label htmlFor="insert-email">Email</label>
-                <p>
-                  <input type="text" id="insert-email" />
-                </p>
+                <input type="text" id="insert-email" />
               </div>
               <div className="help-insert-message">
                 <label htmlFor="insert-message">Message</label>
-                <p>
-                  <input type="text" id="insert-message" />
-                </p>
+                <input type="text" id="insert-message" />
               </div>
               <button type="submit" id="submit" className="help-send-button">
                 Send

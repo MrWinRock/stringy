@@ -61,6 +61,11 @@
     font-size: 40px;
 }
 
+.sidebar-room-image {
+    width: 40px;
+    border-radius: 50%;
+}
+
 .sidebar-image {
     width: 40px;
     border-radius: 10px;

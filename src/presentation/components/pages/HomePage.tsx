@@ -32,7 +32,6 @@ const HomePage: React.FC = () => {
                     post_image_url: post.post_image_url,
                 }));
                 setPosts(mappedPosts);
-                console.log("Fetched Posts:", mappedPosts);
             } catch (error) {
                 console.error("Error fetching posts:", error);
             }
