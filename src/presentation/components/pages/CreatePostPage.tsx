@@ -1,19 +1,19 @@
-import Sidebar from "../content/sidebar/Sidebar";
 import Header from "../header/Header";
-import Setting from "../setting/Setting";
+import Sidebar from "../content/sidebar/Sidebar";
+import CreatePost from "../content/posts/create-post/CreatePost";
 
 import './Pages.css'
 
-const SettingPage: React.FC = () => {
+const CreatePostPage: React.FC = () => {
     return (
         <div className="content">
             <Header />
             <Sidebar />
             <section className="main-content">
-                <Setting />
+                <CreatePost />
             </section>
         </div>
     );
-}
+};
 
-export default SettingPage;
+export default CreatePostPage;

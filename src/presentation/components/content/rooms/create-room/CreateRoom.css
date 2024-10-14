@@ -1,0 +1,215 @@
+.create-room {
+    width: 89%;
+    margin: 2rem 5rem;
+}
+
+.create-room-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-room-header {
+    margin-bottom: 1rem;
+}
+
+.create-room-header h1 {
+    color: #000;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.create-room-header p {
+    color: #838080;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.create-room-options {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.create-room-about,
+.create-room-style {
+    display: flex;
+}
+
+.create-room-options-button,
+.create-room-options-button,
+.create-room-options-button {
+    border-radius: 10px 10px 0px 0px;
+    padding: 0.5rem 4rem;
+}
+
+.create-room-options-button.isSelected,
+.create-room-options-button.isSelected,
+.create-room-options-button.isSelected {
+    border: 1px solid #9E9E9E;
+    background: #F0F0F0;
+    padding: 0.5rem 4rem;
+}
+
+.create-room-options-button p,
+.create-room-options-button p,
+.create-room-options-button p {
+    color: #000;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.create-room-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.create-room-title input {
+    width: 80%;
+    height: 4rem;
+    color: black;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 1rem;
+    border-radius: 25px;
+    border: 1px solid #9D9B9B;
+    background: #FFF;
+    margin: 1rem 2rem;
+}
+
+.create-room-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.create-room-textarea {
+    width: 80%;
+    height: 24rem;
+    color: black;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 1rem;
+    border-radius: 25px;
+    border: 1px solid #9D9B9B;
+    background: #FFF;
+    margin: 1rem 2rem;
+}
+
+.editor-devider {
+    height: 1px;
+    margin: 1rem 0;
+    background: #9D9B9B;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.nav-room {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.next-room,
+.back-room,
+.submit-room {
+    padding: 0.5rem 1.5rem;
+    border-radius: 34.5px;
+    background: #E5EBEE;
+    color: #414445;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    margin: 0.5rem 1rem;
+}
+
+.next-room:hover,
+.back-room:hover,
+.submit-room:hover {
+    color: #C3C3C3;
+    background: #F3F3F3;
+}
+
+.add-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.create-room-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.file-input {
+    display: none;
+}
+
+.room-file-upload {
+    max-height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 40px;
+    background: #E5EBEE;
+    padding: 0.5rem 1.5rem;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.room-file-upload:hover {
+    color: #C3C3C3;
+    background: #F3F3F3;
+}
+
+.create-room-banner,
+.create-room-icon {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.file-preview {
+    width: 79%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.file-preview p {
+    color: #000;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

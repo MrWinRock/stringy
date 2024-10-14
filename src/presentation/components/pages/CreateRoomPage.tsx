@@ -1,19 +1,19 @@
-import Sidebar from "../content/sidebar/Sidebar";
 import Header from "../header/Header";
-import Setting from "../setting/Setting";
+import Sidebar from "../content/sidebar/Sidebar";
+import CreateRoom from "../content/rooms/create-room/CreateRoom";
 
 import './Pages.css'
 
-const SettingPage: React.FC = () => {
+const CreateRoomPage: React.FC = () => {
     return (
         <div className="content">
             <Header />
             <Sidebar />
             <section className="main-content">
-                <Setting />
+                <CreateRoom />
             </section>
         </div>
     );
-}
+};
 
-export default SettingPage;
+export default CreateRoomPage;
