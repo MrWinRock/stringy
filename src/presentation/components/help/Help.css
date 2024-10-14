@@ -1,0 +1,120 @@
+.help {
+  width: 100vw;
+}
+
+.help-container {
+  width: 100%;
+}
+
+.help-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 0;
+  padding-left: 4rem;
+  background: #212830;
+}
+
+.help-content {
+  margin-top: 40px;
+  display: flex;
+
+}
+
+.content-logo-text {
+  margin-left: 80px;
+  flex-direction: row;
+}
+
+.logo {
+  margin: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-location {
+  font-size: 30px;
+  margin-left: 20px;
+
+}
+
+.help-insert {
+  margin-left:10%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: flex-end;
+  width: 40%;
+  height: 20%;
+  background-color: #ffffff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 15px; 
+}
+
+.help-insert-massage {
+  display: block;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+}
+
+label {
+  color: #111;
+  font-size: 30px;
+  letter-spacing: 2px;
+  padding-left: 10px;
+}
+
+.help-send-button {  
+  background: #212830;
+  font-size: 30wpx;
+  width: 20%;
+  height: 40px;
+  border-radius: 15px;
+  border: none;
+  margin: 10px 0px;
+}
+
+#submit {
+  color: #95cefd
+}
+#insert-username,#insert-email {
+  background: #cfcfcf;
+  height: 40px;
+  width: 100%;
+  text-align: left;
+  vertical-align: top;
+  border-radius: 15px;
+  white-space: normal; 
+  padding: 0px 20px;
+  border: none;
+  margin-bottom: 20px;
+  color: #000000;
+
+}
+
+#insert-message {
+  background: #cfcfcf;
+  height: 30vh;
+  width: 100%;
+  text-align: left;
+  vertical-align: top;
+  white-space: normal; 
+  border-radius: 15px;
+  padding: 0px 20px;
+  border: none;
+  margin-bottom: 20px;
+  color: #000000;
+
+
+}
+
+.help-title {
+  margin-left: 10%;
+  font-size: 62px;
+  color: #95cefd;
+}
+

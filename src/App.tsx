@@ -8,12 +8,13 @@ import ProfilePage from "./presentation/components/pages/ProfilePage";
 import SettingPage from "./presentation/components/pages/SettingPage";
 import AboutPage from "./presentation/components/pages/AboutPage";
 import CreatePostPage from "./presentation/components/pages/CreatePostPage";
-
-// For test api call
-import TestAPI from "./TestAPI";
 import InPostPage from "./presentation/components/pages/InPostPage";
 import RoomPage from "./presentation/components/pages/RoomPage";
 import CreateRoomPage from "./presentation/components/pages/CreateRoomPage";
+import HelpPage from "./presentation/components/pages/HelpPage";
+
+// For test api call
+import TestAPI from "./TestAPI";
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/setting" element={<SettingPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/help" element={<HelpPage />} />
         <Route path="/testapi" element={<TestAPI />} />
         <Route path="/create-post" element={<CreatePostPage />} />
         <Route path="/:roomname/:id" element={<InPostPage />} />
