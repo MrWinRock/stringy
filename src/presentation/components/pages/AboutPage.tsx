@@ -1,19 +1,17 @@
-import Sidebar from "../content/sidebar/Sidebar";
 import Header from "../header/Header";
-import Setting from "../setting/Setting";
+import Sidebar from "../content/sidebar/Sidebar";
+import About from "../about/About";
 
-import './Pages.css'
-
-const SettingPage: React.FC = () => {
+const AboutPage: React.FC = () => {
     return (
         <div className="content">
             <Header />
             <Sidebar />
             <section className="main-content">
-                <Setting />
+                <About />
             </section>
         </div>
     );
 }
 
-export default SettingPage;
+export default AboutPage;
