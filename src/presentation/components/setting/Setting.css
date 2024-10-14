@@ -1,0 +1,49 @@
+.setting {
+    width: 1230px;
+    height: auto;
+    margin-top: 3%;
+    margin-left: 9%;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.setting-content {
+    font-size: 36px;
+}
+.settting-general {
+    margin: 3%;
+}
+.general-content {
+    margin-left: 5%;
+}
+
+.general-email {
+    font-size: 32px;
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-between;
+}
+
+.general-password {
+    font-size: 32px;
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-between;
+}
+
+.settting-advanced {
+    margin: 3%;
+}
+
+.advanced-content {
+    margin-left: 5%;
+}
+
+.advanced-delete {
+    font-size: 32px;
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-between;
+}
