@@ -4,6 +4,7 @@ export interface DecodedToken {
   userId: number;
   username: string;
   email: string;
+  role: string;
 }
 
 export const decodeToken = (token: string): DecodedToken => {
@@ -12,5 +13,6 @@ export const decodeToken = (token: string): DecodedToken => {
     userId: decoded.id,
     username: decoded.username,
     email: decoded.email,
+    role: decoded.role,
   };
 };

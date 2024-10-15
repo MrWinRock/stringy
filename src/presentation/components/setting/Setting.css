@@ -1,20 +1,46 @@
 .setting {
-    width: 1230px;
-    height: auto;
+    width: 79%;
     margin-top: 3%;
     margin-left: 9%;
 }
 
-h1 {
+hr {
+    border: 1px solid black;
+    margin: 20px auto;
+}
+
+.setting h1 {
+    color: #000;
     font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.setting h2 {
+    color: #000;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.setting p {
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .setting-content {
     font-size: 36px;
 }
-.settting-general {
+
+.setting-general {
     margin: 3%;
 }
+
 .general-content {
     margin-left: 5%;
 }
@@ -22,18 +48,36 @@ h1 {
 .general-email {
     font-size: 32px;
     display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
+    margin: 3rem;
 }
 
 .general-password {
     font-size: 32px;
     display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
+    margin: 3rem;
 }
 
-.settting-advanced {
+.setting button {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-button-icon {
+    font-size: 40px;
+    border-radius: 50%;
+    background-color: none;
+    padding: 1rem;
+    box-sizing: content-box;
+}
+
+.setting button:hover .setting-button-icon {
+    color: #000;
+    background-color: #E8E8E8;
+}
+
+.setting-advanced {
     margin: 3%;
 }
 
@@ -44,6 +88,5 @@ h1 {
 .advanced-delete {
     font-size: 32px;
     display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
+    margin: 3rem;
 }

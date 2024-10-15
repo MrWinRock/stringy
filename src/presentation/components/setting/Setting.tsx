@@ -2,43 +2,48 @@ import "./Setting.css";
 import { FaChevronRight } from "react-icons/fa";
 
 const Setting: React.FC = () => {
+
+  const handleEmailClick = () => {
+    console.log("Email");
+  };
+
+  const handlePasswordClick = () => {
+    console.log("Password");
+  }
+
+  const handleDeleteClick = () => {
+    console.log("Delete");
+  }
+  
   return (
     <div className="setting">
-      <strong>
-        <h1>Setting</h1>
-      </strong>
-      <hr style={{ border: "1px solid black", margin: "20px 0" }} />
-
+      <h1>Setting</h1>
+      <hr />
       <div className="setting-content">
-        <div className="settting-general">
-          <strong>
-            <h2>General</h2>
-          </strong>
+        <div className="setting-general">
+          <h2>General</h2>
           <div className="general-content">
             <div className="general-email">
-              <p>Email</p>
-              <button>
-                <FaChevronRight />
+              <button onClick={handleEmailClick}>
+                <p>Email</p>
+                <FaChevronRight className="setting-button-icon" />
               </button>
             </div>
             <div className="general-password">
-              <p>Password</p>
-              <button>
-                <FaChevronRight />
+              <button onClick={handlePasswordClick}>
+                <p>Password</p>
+                <FaChevronRight className="setting-button-icon" />
               </button>
             </div>
           </div>
         </div>
-
-        <div className="settting-advanced">
-          <strong>
-            <h2>Advanced</h2>
-          </strong>
+        <div className="setting-advanced">
+          <h2>Advanced</h2>
           <div className="advanced-content">
             <div className="advanced-delete">
-              Delete Accout
-              <button>
-                <FaChevronRight />
+              <button onClick={handleDeleteClick}>
+                Delete Accout
+                <FaChevronRight className="setting-button-icon" />
               </button>
             </div>
           </div>
