@@ -34,7 +34,6 @@ const InRoom: React.FC = () => {
         const fetchRoomData = async () => {
             try {
                 const response = await api.get(`/rooms/${room_id}`);
-                console.log("Fetched Room:", response.data);
 
                 setRoom(response.data);
             } catch (error) {
@@ -50,7 +49,6 @@ const InRoom: React.FC = () => {
             if (room && room.room_id) {
                 try {
                     const response = await api.get(`/posts/rooms/${room.room_id}/posts`);
-                    console.log("Fetched Posts:", response.data);
 
                     const mappedPosts = response.data.map((post: any) => ({
                         id: post.post_id,
@@ -62,7 +60,6 @@ const InRoom: React.FC = () => {
                         post_image_url: post.post_image_url,
                     }));
                     setPosts(mappedPosts);
-                    console.log("Fetched Posts:", mappedPosts);
                 } catch (error) {
                     console.error("Error fetching posts:", error);
                 }

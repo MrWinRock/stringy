@@ -1,0 +1,50 @@
+.explore {
+    margin: 2rem;
+    align-items: center;
+    padding: 20px;
+}
+
+.explore-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem 3rem;
+}
+
+.explore-room-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 59px;
+    border: 1px solid #000;
+    background: #FFF;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.explore-room-list:hover {
+    background: #E2E2E2;
+}
+
+.explore-room-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.explore-room-container p {
+    color: #000;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.explore-room-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

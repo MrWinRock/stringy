@@ -1,22 +1,21 @@
 .profile-page {
-    margin: auto;
-    max-width: 82vw;
+    margin-left: 10%;
+    max-width: 100%;
     width: 100%;
 }
 
 .profile-page-container {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
 }
 
 .user-profile {
-    width: 24%;
-    padding: 50px 30px 0 0;
+    width: 100%;
+    padding: 50px 30px 0 30px;
     height: 100vh;
     background-color: #ffffff;
-    border-right: 1px solid black;
 }
 
 .user-profile-container {
@@ -58,6 +57,7 @@
 }
 
 .user-content {
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -94,4 +94,38 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+.edit-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-bio-edit {
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 10px;
+    border: 1px solid #A8A8A8;
+    padding: 1rem 1rem;
+    background: #F3F3F3;
+}
+
+.profile-edit-profile,
+.profile-save-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #A8A8A8;
+    background: #F3F3F3;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

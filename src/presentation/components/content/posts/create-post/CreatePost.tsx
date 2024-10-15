@@ -11,7 +11,7 @@ import logo_stringy from "./../../../../assets/images/logo_stringy.png";
 import "./CreatePost.css";
 
 interface Room {
-    room_id: number;
+    room_id: string;
     title: string;
     room_picture_url: string;
 }
@@ -24,7 +24,7 @@ const CreatePost: React.FC = () => {
     const editorRef = useRef<Editor | null>(null);
     const editorContainerRef = useRef<HTMLDivElement>(null);
     const [rooms, setRooms] = useState<Room[]>([]);
-    const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
+    const [selectedRoom, setSelectedRoom] = useState<string | null>(null);
 
     // post components
     const [postTitle, setPostTitle] = useState<string>("");
@@ -43,7 +43,7 @@ const CreatePost: React.FC = () => {
     useEffect(() => {
         const fetchRooms = async () => {
             try {
-                const response = await api.get("/rooms/sidebar");
+                const response = await api.get("/rooms/rooms");
                 setRooms(response.data.rooms);
             } catch (error) {
                 console.error("Error fetching rooms:", error);
@@ -123,11 +123,14 @@ const CreatePost: React.FC = () => {
         }
     };
 
-    const handleRoomSelected = (room_id: number) => {
+    const handleRoomSelected = (room_id: string) => {
         const selectedRoom = rooms.find(room => room.room_id === room_id);
+        console.log("Selected room:", selectedRoom);
+        console.log("Selected room id:", room_id);
+
         if (selectedRoom) {
             setSelectedRoom(room_id);
-            setPostCommunity(selectedRoom.room_id.toString());
+            setPostCommunity(selectedRoom.room_id);
         }
     };
 
@@ -287,7 +290,7 @@ const CreatePost: React.FC = () => {
                                     <div className="create-post-select-room">
                                         <button
                                             type="button"
-                                            className={selectedRoom === room.room_id ? "selectedRoom" : ""}
+                                            className={selectedRoom === room.room_id ? "selected-room" : ""}
                                             onClick={() => handleRoomSelected(room.room_id)}
                                         >
                                             Select
