@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { decodeToken } from "./../../../utils/authUtil";
 import { getProfilePicture } from "../../../services/uploadService"; // Import the existing function
@@ -25,6 +25,7 @@ const Header: React.FC = () => {
     const [profilePictureUrl, setProfilePictureUrl] = useState<string | null>(null);
 
     const registerModalRef = React.useRef<any>();
+    const navigate = useNavigate();
 
     const token = localStorage.getItem("token");
 
@@ -74,6 +75,8 @@ const Header: React.FC = () => {
         if (registerModalRef.current) {
             registerModalRef.current.handleSignOut();
         }
+
+        navigate("/");
     }
 
     return (

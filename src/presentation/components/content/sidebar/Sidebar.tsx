@@ -1,22 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import api from "./../../../../services/api";
 
 import "./Sidebar.css";
 
 import logo_stringy from "./../../../assets/images/logo_stringy.png";
 
 // import icons
-import { PiFireBold } from "react-icons/pi"; // popular
+// import { PiFireBold } from "react-icons/pi"; // popular
 import { TbWorld } from "react-icons/tb"; // explore
-import { CgBookmark } from "react-icons/cg"; // saved
+// import { CgBookmark } from "react-icons/cg"; // saved
 import { LuPlusSquare } from "react-icons/lu"; // create
 import { TbHelpCircle } from "react-icons/tb"; // help
 import { FaChevronDown } from "react-icons/fa"; // dropdown
 
-import { Link } from "react-router-dom";
+interface Room {
+  room_id: number;
+  title: string;
+  room_picture_url: string;
+}
 
 const Sidebar = () => {
   const [dropdownCommunities, setDropdownCommunities] = useState(true);
   const [dropdownResources, setDropdownResources] = useState(true);
+  const [rooms, setRooms] = useState<Room[]>([]);
 
   const handleCommunitiesClick = () => {
     setDropdownCommunities(!dropdownCommunities);
@@ -26,29 +33,42 @@ const Sidebar = () => {
     setDropdownResources(!dropdownResources);
   };
 
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const response = await api.get("/rooms/sidebar");
+        setRooms(response.data.rooms);
+      } catch (error) {
+        console.error("Error fetching rooms:", error);
+      }
+    };
+
+    fetchRooms();
+  }, []);
+
   return (
     <section className="sidebar">
       <div className="sidebar-container">
         <div className="sidebar-section">
           <ul className="sidebar-nav">
-            <li>
+            {/* <li>
               <button className="sidebar-button">
                 <PiFireBold className="sidebar-icon " />
                 <p>Popular</p>
               </button>
-            </li>
+            </li> */}
             <li>
-              <button className="sidebar-button">
+              <Link to="/explore" className="sidebar-button">
                 <TbWorld className="sidebar-icon " />
-                <p>Explore</p>
-              </button>
+                <p>Explore Community</p>
+              </Link>
             </li>
-            <li>
+            {/* <li>
               <button className="sidebar-button">
                 <CgBookmark className="sidebar-icon " />
                 <p>Saved</p>
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="sidebar-section">
@@ -71,11 +91,18 @@ const Sidebar = () => {
               <p>Create a Community</p>
             </Link>
             <ul className="sidebar-nav">
-              <li>
-                <button className="sidebar-button">
-                  <p>Room</p>
-                </button>
-              </li>
+              {rooms.map((room) => (
+                <li key={room.room_id}>
+                  <Link to={`/${room.room_id}`} className="sidebar-button">
+                    {room.room_picture_url ? (
+                      <img src={room.room_picture_url} className="sidebar-room-image" alt="room" />
+                    ) : (
+                      <img src={logo_stringy} className="sidebar-room-image" alt="room" />
+                    )}
+                    <p>{room.title}</p>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -106,10 +133,10 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <button className="sidebar-button">
+                <Link to="/help" className="sidebar-button">
                   <TbHelpCircle className="sidebar-icon" />
                   <p>Help</p>
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

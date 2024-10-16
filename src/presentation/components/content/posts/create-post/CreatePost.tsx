@@ -1,11 +1,20 @@
 import "draft-js/dist/Draft.css";
-import "./CreatePost.css";
 import TextEditorToolbar from "./TextEditorToolbar";
 import React, { useState, useRef, useEffect } from "react";
 import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
 import api from "./../../../../../services/api";
 import { decodeToken } from "./../../../../../utils/authUtil";
 import { useNavigate } from "react-router-dom";
+
+import logo_stringy from "./../../../../assets/images/logo_stringy.png";
+
+import "./CreatePost.css";
+
+interface Room {
+    room_id: string;
+    title: string;
+    room_picture_url: string;
+}
 
 const CreatePost: React.FC = () => {
     const [isTextButtonSelected, setIsTextButtonSelected] = useState<boolean>(true);
@@ -14,6 +23,8 @@ const CreatePost: React.FC = () => {
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const editorRef = useRef<Editor | null>(null);
     const editorContainerRef = useRef<HTMLDivElement>(null);
+    const [rooms, setRooms] = useState<Room[]>([]);
+    const [selectedRoom, setSelectedRoom] = useState<string | null>(null);
 
     // post components
     const [postTitle, setPostTitle] = useState<string>("");
@@ -27,6 +38,19 @@ const CreatePost: React.FC = () => {
         if (editorRef.current) {
             editorRef.current.focus();
         }
+    }, []);
+
+    useEffect(() => {
+        const fetchRooms = async () => {
+            try {
+                const response = await api.get("/rooms/rooms");
+                setRooms(response.data.rooms);
+            } catch (error) {
+                console.error("Error fetching rooms:", error);
+            }
+        };
+
+        fetchRooms();
     }, []);
 
     const handleEditorChange = (state: EditorState) => {
@@ -96,6 +120,17 @@ const CreatePost: React.FC = () => {
         if (editorContainerRef.current) {
             const contentHeight = editorContainerRef.current.scrollHeight;
             editorContainerRef.current.style.height = `${contentHeight}px`;
+        }
+    };
+
+    const handleRoomSelected = (room_id: string) => {
+        const selectedRoom = rooms.find(room => room.room_id === room_id);
+        console.log("Selected room:", selectedRoom);
+        console.log("Selected room id:", room_id);
+
+        if (selectedRoom) {
+            setSelectedRoom(room_id);
+            setPostCommunity(selectedRoom.room_id);
         }
     };
 
@@ -240,12 +275,29 @@ const CreatePost: React.FC = () => {
                     )}
                     {isCommunityButtonSelected && (
                         <div className="community">
-                            <input
-                                type="text"
-                                placeholder="Community"
-                                value={postCommunity}
-                                onChange={(e) => setPostCommunity(e.target.value)}
-                            />
+                            {rooms.map((room) => (
+                                <div key={room.room_id} className="room-list">
+                                    <div className="room-field">
+                                        <div className="create-post-room-list">
+                                            {room.room_picture_url ? (
+                                                <img src={room.room_picture_url} className="create-post-room-image" alt="room" />
+                                            ) : (
+                                                <img src={logo_stringy} className="create-post-room-image" alt="room" />
+                                            )}
+                                            <p>{room.title}</p>
+                                        </div>
+                                    </div>
+                                    <div className="create-post-select-room">
+                                        <button
+                                            type="button"
+                                            className={selectedRoom === room.room_id ? "selected-room" : ""}
+                                            onClick={() => handleRoomSelected(room.room_id)}
+                                        >
+                                            Select
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     )}
                     <div className="submit-container">

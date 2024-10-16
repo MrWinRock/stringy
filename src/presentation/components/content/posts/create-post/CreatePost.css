@@ -199,3 +199,69 @@
     align-content: center;
     text-align: center;
 }
+
+.community {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.room-list {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 60px;
+    border: 1px solid #000;
+    padding: 2rem;
+}
+
+.create-post-room-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.create-post-room-list p {
+    color: #000;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.create-post-room-image {
+    width: 109px;
+    height: 109px;
+    border-radius: 50%;
+}
+
+.create-post-select-room button {
+    border-radius: 19.5px;
+    border: 1px solid #E9E9E9;
+    background: #F3F3F3;
+    padding: 1rem 2rem;
+    color: #C3C3C3;
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.create-post-select-room button:hover {
+    background: #E5EBEE;
+    color: #414445;
+}
+
+.create-post-select-room button.selected-room {
+    color: #414445;
+    border-radius: 19.5px;
+    border: 1px solid #414445;
+    background: #E5EBEE;
+}

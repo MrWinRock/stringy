@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { getProfilePicture } from "../../../services/uploadService";
 import { decodeToken } from "../../../utils/authUtil";
 import { uploadService } from "./../../../services/uploadService";
+import { getBio, updateBio } from "../../../services/profileService";
 
 // icons import
 import { FaRegUserCircle } from "react-icons/fa";
@@ -10,11 +11,10 @@ import { BsCamera } from "react-icons/bs";
 
 const Profile: React.FC = () => {
     const [username, setUsername] = useState<string>("Username");
-    const [communityJoined, setCommunityJoined] = useState<number>(0);
-    const [bio, setBio] = useState<string>(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel lectus posuere, aliquet augue in, convallis arcu."
-    );
+    const [bio, setBio] = useState<string>(""); // Initialize bio to an empty string
     const [profilePictureUrl, setProfilePictureUrl] = useState<string | null>(null);
+    const [editMode, setEditMode] = useState<boolean>(false);
+    const [newBio, setNewBio] = useState<string>(""); // Initialize newBio to an empty string
 
     const [image, setImage] = useState<File | null>(null);
     const [userId, setUserId] = useState<number | null>(null);
@@ -28,6 +28,7 @@ const Profile: React.FC = () => {
             setUsername(decodedToken.username);
             setUserId(decodedToken.userId);
             fetchProfilePicture(decodedToken.userId);
+            fetchBio(decodedToken.userId);
         } else {
             console.log("No token found in localStorage");
         }
@@ -42,12 +43,22 @@ const Profile: React.FC = () => {
         }
     };
 
+    const fetchBio = async (userId: number) => {
+        try {
+            const response = await getBio(userId);
+            const fetchedBio = response.bio || ""; // Ensure fetchedBio is never null
+            setBio(fetchedBio);
+            setNewBio(fetchedBio);
+        } catch (error) {
+            console.error("Error fetching bio:", error);
+        }
+    };
+
     const handleImageUpload = async () => {
         if (image && userId !== null) {
             try {
                 const imageUrl = await uploadService(image, userId);
                 setProfilePictureUrl(imageUrl);
-                console.log("Image uploaded: ", imageUrl);
             } catch (error) {
                 console.error("Error uploading image: ", error);
             }
@@ -65,6 +76,22 @@ const Profile: React.FC = () => {
         setImage(file);
         if (file) {
             handleImageUpload();
+        }
+    };
+
+    const handleEditClick = () => {
+        setEditMode(true);
+    };
+
+    const handleSaveClick = async () => {
+        if (userId !== null) {
+            try {
+                await updateBio(userId, newBio);
+                setBio(newBio);
+                setEditMode(false);
+            } catch (error) {
+                console.error("Error updating bio:", error);
+            }
         }
     };
 
@@ -94,10 +121,26 @@ const Profile: React.FC = () => {
                         </div>
                         <div className="user-content">
                             <h2 className="profile-username">{username}</h2>
-                            <p className="profile-community">{communityJoined} Community joined.</p>
-                            <p className="profile-bio">
-                                {bio}
-                            </p>
+                            {/* <p className="profile-community">{communityJoined} Community joined.</p> */}
+
+                            {editMode ? (
+                                <div className="edit-profile">
+                                    <textarea
+                                        className="profile-bio-edit"
+                                        value={newBio}
+                                        placeholder="Write a bio..."
+                                        onChange={(e) => setNewBio(e.target.value)}
+                                    />
+                                    <button className="profile-save-profile" onClick={handleSaveClick}>Save</button>
+                                </div>
+                            ) : (
+                                <div className="edit-profile">
+                                    <p className="profile-bio">
+                                        {bio}
+                                    </p>
+                                    <button className="profile-edit-profile" onClick={handleEditClick}>Edit Profile</button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

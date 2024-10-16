@@ -31,24 +31,7 @@ const AboutUs = () => {
         </div>
         <div className="about-website">
           <p>
-            &emsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Omnis corporis eaque, ratione vitae animi eveniet optio aperiam
-            natus laboriosam inventore. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Labore minus quis non accusantium rem dolores sed
-            repellendus in veniam dolorum suscipit itaque maxime asperiores,
-            dolor corporis doloremque, eligendi odit. Ipsum, porro voluptatum
-            fuga pariatur dicta eius? Minima aspernatur nemo accusantium amet
-            cum quidem ducimus quis incidunt eaque laborum impedit odit nihil
-            optio suscipit expedita earum voluptatem mollitia dicta reiciendis
-            ab, ut fugiat! Nemo quia unde saepe tenetur cupiditate! Ut harum
-            aliquam delectus placeat autem facilis? Doloribus placeat blanditiis
-            quas nulla inventore praesentium id. Voluptatem doloribus aperiam,
-            ut beatae ad harum illum, distinctio quod sed eveniet praesentium
-            quis, minus corporis nulla?
-            <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius
-            beatae quia blanditiis ipsum. Quibusdam nemo repudiandae fugiat ea
-            reiciendis velit!
+            &emsp;&emsp;เว็บไซต์นี้ถูกสร้างขึ้นเพื่อเป็นแหล่งรวมของคนที่สนใจในการเขียนโค้ด ไม่ว่าคุณจะเป็นมือใหม่ที่เพิ่งเริ่มต้น หรือเป็นมือโปรที่มีประสบการณ์ ที่นี่คุณสามารถเข้ามาพูดคุย แชร์ไอเดีย แลกเปลี่ยนความรู้ และช่วยกันแก้ปัญหาที่เกิดขึ้นในการเขียนโปรแกรมได้อย่างอิสระและยังมีตัวอย่างโค้ดและบทความที่จะช่วยให้คุณพัฒนาทักษะได้มากขึ้น เราอยากให้ที่นี่เป็นชุมชนที่สนุกและเป็นกันเองที่ทุกคนเรียนรู้ไปด้วยกัน
           </p>
         </div>
         <div className="team-members">
