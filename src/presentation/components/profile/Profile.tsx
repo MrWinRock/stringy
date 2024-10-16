@@ -11,13 +11,14 @@ import { BsCamera } from "react-icons/bs";
 
 const Profile: React.FC = () => {
     const [username, setUsername] = useState<string>("Username");
-    const [bio, setBio] = useState<string>(""); // Initialize bio to an empty string
+    const [bio, setBio] = useState<string>("");
     const [profilePictureUrl, setProfilePictureUrl] = useState<string | null>(null);
     const [editMode, setEditMode] = useState<boolean>(false);
-    const [newBio, setNewBio] = useState<string>(""); // Initialize newBio to an empty string
+    const [newBio, setNewBio] = useState<string>("");
 
     const [image, setImage] = useState<File | null>(null);
     const [userId, setUserId] = useState<number | null>(null);
+    const [canUpload, setCanUpload] = useState<boolean>(false);
 
     const token = localStorage.getItem("token");
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -46,7 +47,7 @@ const Profile: React.FC = () => {
     const fetchBio = async (userId: number) => {
         try {
             const response = await getBio(userId);
-            const fetchedBio = response.bio || ""; // Ensure fetchedBio is never null
+            const fetchedBio = response.bio || "";
             setBio(fetchedBio);
             setNewBio(fetchedBio);
         } catch (error) {
@@ -62,6 +63,7 @@ const Profile: React.FC = () => {
             } catch (error) {
                 console.error("Error uploading image: ", error);
             }
+            setCanUpload(false);
         }
     };
 
@@ -74,6 +76,8 @@ const Profile: React.FC = () => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;
         setImage(file);
+        setCanUpload(true);
+
         if (file) {
             handleImageUpload();
         }
@@ -119,6 +123,11 @@ const Profile: React.FC = () => {
                                 className="input-file"
                             />
                         </div>
+                        {canUpload ? (
+                            <button onClick={handleImageUpload} className="upload-image">Upload</button>
+                        ) : (
+                            null
+                        )}
                         <div className="user-content">
                             <h2 className="profile-username">{username}</h2>
                             {/* <p className="profile-community">{communityJoined} Community joined.</p> */}
