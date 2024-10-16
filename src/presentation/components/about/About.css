@@ -15,12 +15,11 @@
   justify-content: flex-start;
   padding: 1rem 0;
   padding-left: 4rem;
-  background: #212830;
 }
 
 .about-header h2 {
-  color: #95cefd;
-  font-size: 36px;
+  color: #000;
+  font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

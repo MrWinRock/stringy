@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import api from "./../../../../../services/api";
 
 import stringy_logo from "./../../../../assets/images/logo_stringy.png";
@@ -92,17 +92,27 @@ const InRoom: React.FC = () => {
                     </div>
                 </div>
             )}
-            {posts.map((post) => (
-                <Post
-                    key={post.id}
-                    id={post.id}
-                    roomname={post.room_title}
-                    username={post.username}
-                    title={post.post_title}
-                    content={post.content}
-                    post_image_url={post.post_image_url}
-                />
-            ))}
+            <section className="main-content">
+                {posts.length === 0 ? (
+                    <div className="no-post-found">
+                        <p>No posts found</p>
+                        <Link to="/create-post" className="page-create-post">Create a post...</Link>
+                    </div>
+                ) : (
+                    posts.map((post) => (
+                        <Post
+                            key={post.id}
+                            id={post.id}
+                            roomname={post.room_title}
+                            username={post.username}
+                            title={post.post_title}
+                            content={post.content}
+                            room_picture_url={post.room_picture_url}
+                            post_image_url={post.post_image_url}
+                        />
+                    ))
+                )}
+            </section>
         </div>
     );
 };

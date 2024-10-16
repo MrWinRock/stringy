@@ -3,18 +3,23 @@ import { FaChevronRight } from "react-icons/fa";
 
 const Setting: React.FC = () => {
 
+  const contactAdmin = "Please contact the admin for any changes to your account.";
+
   const handleEmailClick = () => {
-    console.log("Email");
+    // console.log("Email");
+    alert(contactAdmin);
   };
 
   const handlePasswordClick = () => {
-    console.log("Password");
+    // console.log("Password");
+    alert(contactAdmin);
   }
 
   const handleDeleteClick = () => {
-    console.log("Delete");
+    // console.log("Delete");
+    alert(contactAdmin);
   }
-  
+
   return (
     <div className="setting">
       <h1>Setting</h1>

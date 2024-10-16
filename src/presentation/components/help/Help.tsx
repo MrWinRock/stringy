@@ -34,7 +34,8 @@ const Help: React.FC = () => {
               </div>
               <div className="help-insert-message">
                 <label htmlFor="insert-message">Message</label>
-                <input type="text" id="insert-message" />
+                {/* <input type="text" id="insert-message" /> */}
+                <textarea name="insert-message" id="insert-message" className="help-insert-textarea"></textarea>
               </div>
               <button type="submit" id="submit" className="help-send-button">
                 Send

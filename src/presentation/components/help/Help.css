@@ -13,12 +13,11 @@
   justify-content: flex-start;
   padding: 1rem 0;
   padding-left: 4rem;
-  background: #212830;
 }
 
 .help-header h2 {
-  color: #95cefd;
-  font-size: 36px;
+  color: #000;
+  font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -140,13 +139,13 @@
   margin-top: 10px;
 }
 
-.help-insert-message input {
+.help-insert-textarea {
   width: 100%;
   height: 17rem;
   border-radius: 10px;
   border: 1px solid #BEBBBB;
   background: #F1EFEF;
-  padding-left: 10px;
+  padding: 10px;
   font-size: 20px;
   margin-top: 10px;
 }

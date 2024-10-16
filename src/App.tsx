@@ -29,7 +29,7 @@ const App: React.FC = () => {
         <Route path="/testapi" element={<TestAPI />} />
         <Route path="/create-post" element={<CreatePostPage />} />
         <Route path="/create-room" element={<CreateRoomPage />} />
-        <Route path="/:roomTitle/:id" element={<InPostPage />} />
+        <Route path="/:roomTitle/:postId" element={<InPostPage />} />
         <Route path="/:room_id" element={<RoomPage />} />
         <Route path="/explore" element={<ExplorePage />} />
       </Routes>
