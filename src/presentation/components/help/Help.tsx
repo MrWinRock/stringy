@@ -17,9 +17,9 @@ const Help: React.FC = () => {
               />
             </div>
             <div className="text-location">
-              <h2>String (Header office)</h2>
+              <h2>Stringy (Head office)</h2>
               <p>1 ถนน อู่ทองนอก แขวงดุสิต</p>
-              <p> เขตดุสิต กรุงเทพมหานคร 10300</p>
+              <p>เขตดุสิต กรุงเทพมหานคร 10300</p>
             </div>
           </div>
           <div className="help-insert">
